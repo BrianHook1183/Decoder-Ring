@@ -2,6 +2,22 @@
 
 A project for the software engineering course for Thinkful.
 
+---
+
+> To install dependencies locally run the command:
+>
+>     npm i
+>
+> To run the tests, you can run the following command:
+>
+>      npm test
+>
+> To watch how the code you write affects the application website, you can run the following command. This command will start a server and take over your terminal window. To stop the server from running, you can press `Ctrl + C`.
+>
+>      npm start
+
+---
+
 ## Summary
 
 This project was designed to test the ability to build tricky algorithms in JavaScript as well as write unit tests with Mocha & Chai. HTML and CSS was supplied with starter code. The following skills were utilized:
@@ -14,7 +30,9 @@ This project was designed to test the ability to build tricky algorithms in Java
 - Iterating through strings, objects, and arrays.
 - Debugging through reading errors and using the VSCode debugger.
 
-> ## Instructions
+---
+
+> ## Requirements
 >
 > You are tasked with building functions for an application that will either encode or decode a string using a variety of ciphers. For each cipher, you should make a series of tests using Mocha & Chai to confirm that your cipher works.
 >
@@ -30,6 +48,8 @@ This project was designed to test the ability to build tricky algorithms in Java
 > - Write tests for the substitution() function.
 >
 > **Note:** Your submission will be tested on a total of 29 tests. 13 of those tests are hidden.
+
+---
 
 ## Caesar Shift
 
@@ -72,6 +92,8 @@ caesar("thinkful"); //> false
 caesar("thinkful", 99); //> false
 caesar("thinkful", -26); //> false
 ```
+
+---
 
 ## Polybius Square
 
@@ -117,6 +139,8 @@ polybius("3251131343 2543241341", false); //> "hello world"
 polybius("4432423352125413", false); //> "th(i/j)nkful
 polybius("44324233521254134", false); //> false
 ```
+
+---
 
 ## Substitution Cipher
 
