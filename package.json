@@ -1,0 +1,17 @@
+{
+  "name": "project-decoder-ring",
+  "version": "1.0.0",
+  "description": "This project allows you to encode and decode text with a variety of different ciphers.",
+  "scripts": {
+    "test": "mocha test",
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "live-server": "^1.2.1",
+    "mocha": "^8.1.3"
+  }
+}
