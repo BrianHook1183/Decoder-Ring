@@ -97,13 +97,13 @@ caesar("thinkful", -26); //> false
 
 ## Polybius Square
 
-|     | 1   | 2   | 3   | 4   | 5   |
-| --- | --- | --- | --- | --- | --- |
-| 1   | A   | B   | C   | D   | E   |
-| 2   | F   | G   | H   | I/J | K   |
-| 3   | L   | M   | N   | O   | P   |
-| 4   | Q   | R   | S   | T   | U   |
-| 5   | V   | W   | X   | Y   | Z   |
+|       |     | 1   | 2   | 3   | 4   | 5   |
+| ----- | --- | --- | --- | --- | --- | --- |
+| **1** | -   | A   | B   | C   | D   | E   |
+| **2** | -   | F   | G   | H   | I/J | K   |
+| **3** | -   | L   | M   | N   | O   | P   |
+| **4** | -   | Q   | R   | S   | T   | U   |
+| **5** | -   | V   | W   | X   | Y   | Z   |
 
 The Polybius Square is a cipher that is achieved by arranging a typical alphabet into a grid. Each letter is represented through a coordinate. For example, in the above table, the letter "B" would be represented by the numerical pair "21".
 
@@ -158,8 +158,8 @@ This would result in the code "RMWWL". To decrypt this code, you would simply ta
     substitution()
 
 The substitution() function in the src/substitution.js file has three parameters:
--input refers to the inputted text to be encoded or decoded.
 
+- **input** refers to the inputted text to be encoded or decoded.
 - **alphabet** refers to substitution alphabet.
 - **encode** refers to whether you should encode or decode the message. By default it is set to true.
 
