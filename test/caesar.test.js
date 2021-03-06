@@ -26,4 +26,11 @@ describe("caesar", () => {
     });
     expect(actual).to.be.true;
   });
+
+  // !only for dev test. This should turn into "returns correct string" later when there is a function to test
+  it("4) decode mode inverses shift value", () => {
+    const shift = 9;
+    const actual = caesar(input, shift, false);
+    expect(actual).to.be.equal(shift * -1);
+  });
 });

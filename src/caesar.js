@@ -9,9 +9,9 @@
 // encode refers to whether you should encode or decode the message. By default it is set to true.
 
 // *constraints and rules:
-// todo If the shift value is not present, equal to 0, less than -25, or greater than 25, the function should return false.
+// If the shift value is not present, equal to 0, less than -25, or greater than 25, the function should return false.
 // todo Spaces should be maintained throughout, as should other non-alphabetic symbols.
-// todo Capital letters can be ignored.
+// todo Capital letters can be ignored. (output is always lowercase)
 // todo If a letter is shifted so that it goes "off" the alphabet (e.g. a shift of 3 on the letter "z"), it should wrap around to the front of the alphabet (e.g. "z" becomes "c").
 
 // *Examples
@@ -33,6 +33,12 @@ const caesarModule = (function () {
     let result = true;
     if (shift < -25 || shift > 25 || !shift) {
       return false;
+    }
+    // sets to decode mode
+    if (encode === false) {
+      shift = shift * -1;
+      // !only for dev test.
+      result = shift;
     }
 
     return result;
