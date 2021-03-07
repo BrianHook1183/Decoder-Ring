@@ -41,6 +41,45 @@ const caesarModule = (function () {
       result = shift;
     }
 
+    let inputArray = input.split("");
+    console.log("inputArray");
+    console.log(inputArray);
+
+    let toNumbers = inputArray.map((character) => {
+      const unicode = character.toLowerCase().charCodeAt();
+      if (unicode >= 97 && unicode <= 122) {
+        return unicode;
+      } else {
+        return character;
+      }
+    });
+    console.log("toNumbers");
+    console.log(toNumbers);
+
+    let shiftedNumbers = toNumbers.map((number) => {
+      if (typeof number === "number") {
+        return number + shift;
+      } else {
+        return number;
+      }
+    });
+    console.log("shiftedNumbers");
+    console.log(shiftedNumbers);
+
+    let outputArray = shiftedNumbers.map((number) => {
+      if (typeof number === "number") {
+        return String.fromCharCode(number);
+      } else {
+        return number;
+      }
+    });
+    console.log("outputArray");
+    console.log(outputArray);
+
+    result = outputArray.join("");
+    console.log("result");
+    console.log(result);
+
     return result;
   }
 
