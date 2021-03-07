@@ -44,7 +44,7 @@ describe("caesar", () => {
 
   it('6) encodes "*Brian Hook!" shift-1 correctly', () => {
     input = "*Brian Hook!";
-    shift = 1;
+    shift = -1;
     const expected = "*aqhzm gnnj!";
     const actual = caesar(input, shift);
     expect(actual).to.deep.equal(expected);
