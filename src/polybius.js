@@ -25,45 +25,62 @@ const polybiusModule = (function () {
   function polybius(input, encode = true) {
     let square = [
       ["a", "b", "c", "d", "e"],
-      ["f", "g", "h", "i/j", "k"],
+      ["f", "g", "h", "(i/j)", "k"],
       ["l", "m", "n", "o", "p"],
       ["q", "r", "s", "t", "u"],
       ["v", "w", "x", "y", "z"],
     ];
-
-    let inputArray = input.split("");
-    // console.log(`inputArray: ${inputArray}`);
-    let ijFix = inputArray.map((string) => {
-      if (string === "i" || string === "j") {
-        return "i/j";
-      } else {
-        return string;
-      }
-    });
-
-    let xArr = [];
-    let yArr = ijFix.map((letter) => {
-      // console.log(`letter is: ${letter}`);
-      for (let i = 0; i < square.length; i++) {
-        const row = square[i];
-        if (row.find((alpha) => alpha === letter)) {
-          xArr.push(i + 1);
-          // console.log(
-          //   `index of letter: ${row.indexOf(letter) + 1} and index of row: ${
-          //     i + 1
-          //   }`
-          // );
-          return row.indexOf(letter) + 1;
+    if (encode) {
+      let inputArray = input.split("");
+      // console.log(`inputArray: ${inputArray}`);
+      let ijFix = inputArray.map((string) => {
+        if (string === "i" || string === "j") {
+          return "(i/j)";
         } else {
-          // console.log(`didn't find ${letter} in ${row}`);
+          return string;
         }
-      }
-    });
-    result = xArr.reduce((acc, xValue, index) => {
-      acc.push(yArr[index]);
-      acc.push(xValue);
-      return acc;
-    }, []);
+      });
+
+      let xArr = [];
+      let yArr = ijFix.map((letter) => {
+        // console.log(`letter is: ${letter}`);
+        for (let i = 0; i < square.length; i++) {
+          const row = square[i];
+          if (row.find((alpha) => alpha === letter)) {
+            xArr.push(i + 1);
+            // console.log(
+            //   `index of letter: ${row.indexOf(letter) + 1} and index of row: ${
+            //     i + 1
+            //   }`
+            // );
+            return row.indexOf(letter) + 1;
+          } else {
+            // console.log(`didn't find ${letter} in ${row}`);
+          }
+        }
+      });
+      result = xArr.reduce((acc, xValue, index) => {
+        acc.push(yArr[index]);
+        acc.push(xValue);
+        return acc;
+      }, []);
+    }
+    if (!encode) {
+      // TODO find alternative
+      let coordinates = input.match(/..?/g);
+      console.log(coordinates);
+      result = coordinates.map((yx) => {
+        let rowIndex = yx.split("")[1] - 1;
+        console.log(`row index is: ${rowIndex}`);
+        let columnIndex = yx.split("")[0] - 1;
+        console.log(`column index is: ${columnIndex}`);
+        console.log(
+          `square[rowIndex][columnIndex] is: ${square[rowIndex][columnIndex]}`
+        );
+        return square[rowIndex][columnIndex];
+      });
+      console.log(result);
+    }
     // console.log(result);
     return result.join("");
   }

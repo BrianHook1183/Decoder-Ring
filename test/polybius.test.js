@@ -13,8 +13,13 @@ describe("polybius()", () => {
     });
   });
   describe("decoding", () => {
+    it.only("should decode if !encode", () => {
+      expect(polybius("2124421133", false)).to.eql("br(i/j)an");
+    });
     it("should maintain spaces", () => {});
     it("should ignore capital letters", () => {});
-    it("should translate 42 to (i/j)", () => {});
+    it.only("should translate 42 to (i/j)", () => {
+      expect(polybius("42", false)).to.eql("(i/j)");
+    });
   });
 });
