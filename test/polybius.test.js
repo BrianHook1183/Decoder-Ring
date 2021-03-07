@@ -32,6 +32,8 @@ describe("polybius()", () => {
         "(i/j)(i/j)(i/j)(i/j)azaz"
       );
     });
-    // it("should maintain spaces", () => {});
+    it("should maintain spaces", () => {
+      expect(polybius("212442 1133", false)).to.eql("br(i/j) an");
+    });
   });
 });

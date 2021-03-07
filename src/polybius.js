@@ -73,21 +73,23 @@ const polybiusModule = (function () {
     }
     if (!encode) {
       // TODO find alternative
-      let coordinates = input.match(/..?/g);
-      // console.log(coordinates);
+      let spacesAdded = input.replace(" ", 65);
+      console.log(`spacesAdded is: ${spacesAdded}`);
+      let coordinates = spacesAdded.match(/..?/g);
+      console.log(coordinates);
       result = coordinates.map((yx) => {
         let rowIndex = yx.split("")[1] - 1;
-        // console.log(`row index is: ${rowIndex}`);
+        console.log(`row index is: ${rowIndex}`);
         let columnIndex = yx.split("")[0] - 1;
-        // console.log(`column index is: ${columnIndex}`);
-        // console.log(
-        //   `square[rowIndex][columnIndex] is: ${square[rowIndex][columnIndex]}`
-        // );
+        console.log(`column index is: ${columnIndex}`);
+        console.log(
+          `square[rowIndex][columnIndex] is: ${square[rowIndex][columnIndex]}`
+        );
         return square[rowIndex][columnIndex];
       });
-      // console.log(result);
+      console.log(result);
     }
-    // console.log(result);
+    console.log(result);
     return result.join("");
   }
 
