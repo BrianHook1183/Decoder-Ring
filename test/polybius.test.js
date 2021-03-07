@@ -3,23 +3,35 @@ const { expect } = require("chai");
 
 describe("polybius()", () => {
   describe("encoding", () => {
-    it("should maintain spaces", () => {});
-    it("should ignore capital letters", () => {});
-    it.only("should translate the letters i and j to 42", () => {
+    it("should translate the letters i and j to 42", () => {
       expect(polybius("ij")).to.equal("4242");
     });
-    it.only("should encode 'brian' to 2124421133 ", () => {
+
+    it("should encode 'brian' to 2124421133 ", () => {
       expect(polybius("brian")).to.equal("2124421133");
+    });
+
+    it("should maintain spaces", () => {
+      expect(polybius("brian hook")).to.equal("2124421133 32434352");
+    });
+    it("should ignore capital letters", () => {
+      expect(polybius("ijIJazAZ")).to.equal("4242424211551155");
     });
   });
   describe("decoding", () => {
-    it.only("should decode if !encode", () => {
+    it("should decode 2124421133 to br(i/j)an", () => {
       expect(polybius("2124421133", false)).to.eql("br(i/j)an");
     });
-    it("should maintain spaces", () => {});
-    it("should ignore capital letters", () => {});
-    it.only("should translate 42 to (i/j)", () => {
+
+    it("should translate 42 to (i/j)", () => {
       expect(polybius("42", false)).to.eql("(i/j)");
     });
+
+    it("should ignore capital letters", () => {
+      expect(polybius("4242424211551155", false)).to.eql(
+        "(i/j)(i/j)(i/j)(i/j)azaz"
+      );
+    });
+    // it("should maintain spaces", () => {});
   });
 });
