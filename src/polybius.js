@@ -20,7 +20,7 @@
 // polybius("44324233521254134", false); //> false
 
 const polybiusModule = (function () {
-  const helper = require("./helper");
+  // const helper = require("./helper");
 
   function polybius(input, encode = true) {
     let square = [
@@ -73,8 +73,10 @@ const polybiusModule = (function () {
     }
     if (!encode) {
       // TODO find alternative
+
       let spacesAdded = input.replace(" ", 65);
       console.log(`spacesAdded is: ${spacesAdded}`);
+      if (spacesAdded.length % 2 !== 0) return false;
       let coordinates = spacesAdded.match(/..?/g);
       console.log(coordinates);
       result = coordinates.map((yx) => {

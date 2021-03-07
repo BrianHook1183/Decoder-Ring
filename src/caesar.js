@@ -4,7 +4,17 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  const helper = require("./helper");
+  // const helper = require("./helper");
+  function toUnicode(array) {
+    return array.map((character) => {
+      const unicode = character.toLowerCase().charCodeAt();
+      if (unicode >= 97 && unicode <= 122) {
+        return unicode;
+      } else {
+        return character;
+      }
+    });
+  }
 
   function caesar(input, shift, encode = true) {
     if (shift < -25 || shift > 25 || !shift) {
@@ -15,7 +25,7 @@ const caesarModule = (function () {
     }
 
     let inputArray = input.split("");
-    let inputNumbers = helper.toUnicode(inputArray);
+    let inputNumbers = toUnicode(inputArray);
 
     let shiftedNumbers = inputNumbers.map((number) => {
       if (typeof number === "number") {

@@ -35,5 +35,8 @@ describe("polybius()", () => {
     it("should maintain spaces", () => {
       expect(polybius("212442 1133", false)).to.eql("br(i/j) an");
     });
+    it("should return false if the length of all numbers is odd", () => {
+      expect(polybius("245", false)).to.be.false;
+    });
   });
 });
