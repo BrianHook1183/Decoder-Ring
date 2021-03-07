@@ -10,9 +10,9 @@
 
 // *constraints and rules:
 // If the shift value is not present, equal to 0, less than -25, or greater than 25, the function should return false.
-// todo Spaces should be maintained throughout, as should other non-alphabetic symbols.
-// todo Capital letters can be ignored. (output is always lowercase)
-// todo If a letter is shifted so that it goes "off" the alphabet (e.g. a shift of 3 on the letter "z"), it should wrap around to the front of the alphabet (e.g. "z" becomes "c").
+// Spaces should be maintained throughout, as should other non-alphabetic symbols.
+// Capital letters can be ignored. (output is always lowercase)
+//  If a letter is shifted so that it goes "off" the alphabet (e.g. a shift of 3 on the letter "z"), it should wrap around to the front of the alphabet (e.g. "z" becomes "c").
 
 // *Examples
 // caesar("thinkful", 3); //> 'wklqnixo'
@@ -37,15 +37,10 @@ const caesarModule = (function () {
     // sets to decode mode
     if (encode === false) {
       shift = shift * -1;
-      // !only for dev test.
-      result = shift;
     }
 
     let inputArray = input.split("");
-    console.log("inputArray");
-    console.log(inputArray);
-
-    let toNumbers = inputArray.map((character) => {
+    let inputNumbers = inputArray.map((character) => {
       const unicode = character.toLowerCase().charCodeAt();
       if (unicode >= 97 && unicode <= 122) {
         return unicode;
@@ -53,33 +48,36 @@ const caesarModule = (function () {
         return character;
       }
     });
-    console.log("toNumbers");
-    console.log(toNumbers);
 
-    let shiftedNumbers = toNumbers.map((number) => {
+    let shiftedNumbers = inputNumbers.map((number) => {
       if (typeof number === "number") {
         return number + shift;
       } else {
         return number;
       }
     });
-    console.log("shiftedNumbers");
-    console.log(shiftedNumbers);
 
-    let outputArray = shiftedNumbers.map((number) => {
+    let loopCorrectedNumbers = shiftedNumbers.map((number) => {
+      if (typeof number === "number") {
+        if (number < 97) {
+          return number + 26;
+        }
+        if (number > 122) {
+          return number - 26;
+        }
+      }
+      return number;
+    });
+
+    let outputArray = loopCorrectedNumbers.map((number) => {
       if (typeof number === "number") {
         return String.fromCharCode(number);
       } else {
         return number;
       }
     });
-    console.log("outputArray");
-    console.log(outputArray);
 
     result = outputArray.join("");
-    console.log("result");
-    console.log(result);
-
     return result;
   }
 
