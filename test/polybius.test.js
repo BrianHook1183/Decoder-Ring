@@ -3,7 +3,7 @@ const { expect } = require("chai");
 
 describe("polybius()", () => {
   describe("encoding", () => {
-    it("should translate the letters i and j to 42", () => {
+    it("should translate the letters 'i' and 'j' to '42'", () => {
       expect(polybius("ij")).to.equal("4242");
     });
 
