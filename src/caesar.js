@@ -4,7 +4,6 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  // const helper = require("./helper");
   function toUnicode(array) {
     return array.map((character) => {
       const unicode = character.toLowerCase().charCodeAt();
