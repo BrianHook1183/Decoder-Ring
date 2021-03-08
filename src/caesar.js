@@ -8,11 +8,7 @@ const caesarModule = (function () {
   function toUnicode(array) {
     return array.map((character) => {
       const unicode = character.toLowerCase().charCodeAt();
-      if (unicode >= 97 && unicode <= 122) {
-        return unicode;
-      } else {
-        return character;
-      }
+      return unicode >= 97 && unicode <= 122 ? unicode : character;
     });
   }
 
@@ -28,11 +24,7 @@ const caesarModule = (function () {
     let inputNumbers = toUnicode(inputArray);
 
     let shiftedNumbers = inputNumbers.map((number) => {
-      if (typeof number === "number") {
-        return number + shift;
-      } else {
-        return number;
-      }
+      return typeof number === "number" ? number + shift : number;
     });
 
     let loopCorrectedNumbers = shiftedNumbers.map((number) => {
@@ -48,13 +40,8 @@ const caesarModule = (function () {
     });
 
     let outputArray = loopCorrectedNumbers.map((number) => {
-      if (typeof number === "number") {
-        return String.fromCharCode(number);
-      } else {
-        return number;
-      }
+      return typeof number === "number" ? String.fromCharCode(number) : number;
     });
-
     return outputArray.join("");
   }
 
