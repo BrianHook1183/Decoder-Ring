@@ -55,29 +55,28 @@ describe.only("substitution()", () => {
   });
 
   describe("decoding", () => {
-    let encode = false;
     it("should decode a message by using the given substitution alphabet", () => {
       let alphabet = "xoyqmcgrukswaflnthdjpzibev";
       let input = "jrufscpw";
-      let actual = substitution(input, alphabet, encode);
+      let actual = substitution(input, alphabet, false);
       expect(actual).to.equal("thinkful");
     });
     it("should work with any kind of key with unique characters", () => {
       let alphabet = "$wae&zrdxtfcygvuhbijnokmpl";
       let input = "y&ii$r&";
-      let actual = substitution(input, alphabet, encode);
+      let actual = substitution(input, alphabet, false);
       expect(actual).to.equal("message");
     });
     it("should preserve spaces", () => {
       let alphabet = "xoyqmcgrukswaflnthdjpzibev";
       let input = "elp xhm xf mbymwwmfj dne";
-      let actual = substitution(input, alphabet, encode);
+      let actual = substitution(input, alphabet, false);
       expect(actual).to.equal("you are an excellent spy");
     });
     it("should ignore capital letters", () => {
       let alphabet = "xoyqmcgrukswaflnthdjpzibev";
       let input = "jRufScPw";
-      let actual = substitution(input, alphabet);
+      let actual = substitution(input, alphabet, false);
       expect(actual).to.equal("thinkful");
     });
   });

@@ -15,8 +15,62 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
   function substitution(input, alphabet, encode = true) {
-    if (alphabet.length !== 26) return false;
-    return true;
+    // substitution alphabet must exist and be exactly 26 characters long.
+    if (!alphabet || alphabet.length !== 26) return false;
+    const alphabetArray = alphabet.split("");
+    const unique = alphabetArray.filter(
+      (item, index, self) => self.indexOf(item) === index
+    );
+    // substitution alphabet can not have any repeated characters
+    if (unique.length !== alphabet.length) return false;
+
+    const realAlphabet = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+    ];
+    const mergedAlphabets = realAlphabet.reduce((acc, letter, index) => {
+      acc.push(letter);
+      acc.push(alphabet[index]);
+      return acc;
+    }, []);
+
+    const encodedMessage = () => {
+      return `in the future, this will encode ${input}`;
+    };
+
+    const decodedMessage = () => {
+      return `in the future, this will decode ${input}`;
+    };
+    console.log("mergedAlphabets");
+    console.log(mergedAlphabets);
+    // with errors now handled, next decide to encode or decode.
+    const result = encode ? encodedMessage() : decodedMessage();
+    console.log(result);
+    return result;
   }
 
   return {
