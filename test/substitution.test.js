@@ -6,7 +6,7 @@ describe("substitution()", () => {
     expect(substitution).to.be.a("function");
   });
 
-  describe.only("error handling", () => {
+  describe("error handling", () => {
     it("should return false if the substitution alphabet is missing", () => {
       let alphabet = undefined;
       let input = "thinkful";
@@ -27,7 +27,7 @@ describe("substitution()", () => {
     });
   });
 
-  describe.only("encoding", () => {
+  describe("encoding", () => {
     it("should encode a message by using the given substitution alphabet", () => {
       let alphabet = "xoyqmcgrukswaflnthdjpzibev";
       let input = "thinkful";

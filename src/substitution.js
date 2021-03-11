@@ -45,7 +45,18 @@ const substitutionModule = (function () {
     };
 
     const decodeMessage = () => {
-      return `in the future, this will decode ${input}`;
+      let result = [];
+      const decode = (char) => {
+        const charIndex = subAlphabetArray.indexOf(char);
+        const decodedChar = realAlphabetArray[charIndex];
+        result.push(decodedChar);
+      };
+      for (let i = 0; i < inputArray.length; i++) {
+        const char = inputArray[i];
+        // preserves space or encodes character
+        char === " " ? result.push(" ") : decode(char);
+      }
+      return result.join("");
     };
 
     // with errors now handled, next decide to encode or decode.
