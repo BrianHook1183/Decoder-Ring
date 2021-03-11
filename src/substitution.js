@@ -31,11 +31,15 @@ const substitutionModule = (function () {
 
     const encodeMessage = () => {
       let result = [];
-      for (let i = 0; i < inputArray.length; i++) {
-        const char = inputArray[i];
+      const encode = (char) => {
         const charIndex = realAlphabetArray.indexOf(char);
         const encodedChar = subAlphabetArray[charIndex];
         result.push(encodedChar);
+      };
+      for (let i = 0; i < inputArray.length; i++) {
+        const char = inputArray[i];
+        // preserves space or encodes character
+        char === " " ? result.push(" ") : encode(char);
       }
       return result.join("");
     };
