@@ -17,60 +17,35 @@ const substitutionModule = (function () {
   function substitution(input, alphabet, encode = true) {
     // substitution alphabet must exist and be exactly 26 characters long.
     if (!alphabet || alphabet.length !== 26) return false;
-    const alphabetArray = alphabet.split("");
-    const unique = alphabetArray.filter(
+
+    //Global Variables
+    const realAlphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+    const inputArray = input.toLowerCase().split("");
+    const subAlphabetArray = alphabet.toLowerCase().split("");
+
+    // substitution alphabet can not have any repeated characters
+    const onlyUniqueChars = subAlphabetArray.filter(
       (item, index, self) => self.indexOf(item) === index
     );
-    // substitution alphabet can not have any repeated characters
-    if (unique.length !== alphabet.length) return false;
+    if (onlyUniqueChars.length !== alphabet.length) return false;
 
-    const realAlphabet = [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z",
-    ];
-    const mergedAlphabets = realAlphabet.reduce((acc, letter, index) => {
-      acc.push(letter);
-      acc.push(alphabet[index]);
-      return acc;
-    }, []);
-
-    const encodedMessage = () => {
-      return `in the future, this will encode ${input}`;
+    const encodeMessage = () => {
+      let result = [];
+      for (let i = 0; i < inputArray.length; i++) {
+        const char = inputArray[i];
+        const charIndex = realAlphabetArray.indexOf(char);
+        const encodedChar = subAlphabetArray[charIndex];
+        result.push(encodedChar);
+      }
+      return result.join("");
     };
 
-    const decodedMessage = () => {
+    const decodeMessage = () => {
       return `in the future, this will decode ${input}`;
     };
-    console.log("mergedAlphabets");
-    console.log(mergedAlphabets);
+
     // with errors now handled, next decide to encode or decode.
-    const result = encode ? encodedMessage() : decodedMessage();
-    console.log(result);
-    return result;
+    return encode ? encodeMessage() : decodeMessage();
   }
 
   return {

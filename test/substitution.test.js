@@ -1,12 +1,12 @@
 const { expect } = require("chai");
 const substitution = require("../src/substitution");
 
-describe.only("substitution()", () => {
+describe("substitution()", () => {
   it("should be a function", () => {
     expect(substitution).to.be.a("function");
   });
 
-  describe("error handling", () => {
+  describe.only("error handling", () => {
     it("should return false if the substitution alphabet is missing", () => {
       let alphabet = undefined;
       let input = "thinkful";
@@ -27,7 +27,7 @@ describe.only("substitution()", () => {
     });
   });
 
-  describe("encoding", () => {
+  describe.only("encoding", () => {
     it("should encode a message by using the given substitution alphabet", () => {
       let alphabet = "xoyqmcgrukswaflnthdjpzibev";
       let input = "thinkful";
